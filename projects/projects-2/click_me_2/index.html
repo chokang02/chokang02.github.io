@@ -44,10 +44,10 @@
             heading.style.left = Math.random() * (window.innerWidth - heading.clientWidth) + 'px';
 
             heading.addEventListener('click', function() {
-                window.location.href = "click_me/index.html";
+                window.location.href = "../click_me_3/index.html";
             });
 
-            var removeDelay = Math.random() * 200 + 50; // Faster disappearing (between 50 and 250 milliseconds)
+            var removeDelay = Math.random() * 800 + 200;
             setTimeout(function() {
                 heading.remove();
             }, removeDelay);
@@ -55,7 +55,7 @@
 
         function spawnClickMe() {
             createClickMeHeading();
-            setTimeout(spawnClickMe, Math.random() * 50); // Faster spawning (up to 50 milliseconds)
+            setTimeout(spawnClickMe, Math.random() * 99);
         }
 
         spawnClickMe();
