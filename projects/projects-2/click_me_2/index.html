@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Navigation</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #f1f0f0; 
+            font-family: Helvetica, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 2;
+            text-align: center;
+            position: relative; 
+        }
+        .href {
+            cursor: pointer;
+            text-decoration: none;
+            position: absolute;
+        }
+        .href {
+            cursor: pointer;
+            text-decoration: none;
+            position: absolute;
+            color: rgb(92, 222, 92);
+        }
+
+    </style>
+</head>
+<body>
+ 
+    <script>
+        function createClickMeHeading() {
+            var heading = document.createElement('h1');
+            heading.className = "href"; 
+            heading.innerText = "CLICK ME";
+            document.body.appendChild(heading);
+
+            heading.style.top = Math.random() * (window.innerHeight - heading.clientHeight) + 'px';
+            heading.style.left = Math.random() * (window.innerWidth - heading.clientWidth) + 'px';
+
+            heading.addEventListener('click', function() {
+                window.location.href = "click_me/index.html";
+            });
+
+            var removeDelay = Math.random() * 200 + 50; // Faster disappearing (between 50 and 250 milliseconds)
+            setTimeout(function() {
+                heading.remove();
+            }, removeDelay);
+        }
+
+        function spawnClickMe() {
+            createClickMeHeading();
+            setTimeout(spawnClickMe, Math.random() * 50); // Faster spawning (up to 50 milliseconds)
+        }
+
+        spawnClickMe();
+    </script>
+</body>
+</html>
