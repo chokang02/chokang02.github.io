@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Life Timeline</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #1f1f1f; 
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            position: relative; 
+        }
+        .points-container {
+            width: 100%;
+            position: absolute;
+            bottom: 250px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .point {
+            cursor: pointer;
+            color: #ebebeb;
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            transition: color 0.3s;
+            margin: 40px;
+        }
+        .point:hover {
+            color: rgb(132, 215, 107);
+        }
+        .point.year-2003:hover {
+            color: #858585;
+        }
+        .point.year-2009:hover {
+            color: #ff3f3f;
+        }
+        .point.year-2013:hover {
+            color: #8bff80;
+        }
+        .point.year-2017:hover {
+            color: #ff3f3f;
+        }
+        .point.year-2020:hover {
+            color: #ff3f3f;
+        }
+        .point.year-2021:hover {
+            color: #ff3f3f;
+        }
+        .point.year-2022:hover {
+            color: #fd81c9;
+        }
+        .point.year-2024:hover {
+            color: #8ad3fd; 
+        }
+        #yearContent {
+            display: none;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.601);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-text {
+            position: absolute;
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            animation: floatText 5s infinite linear;
+        }
+        .jumping-text {
+            position: absolute;
+            color: rgb(255, 137, 59);
+            font-size: 20px;
+            animation: jumpText 0.5s infinite linear alternate;
+        }
+        .heart {
+            position: absolute;
+            color: pink;
+            font-size: 20px;
+            animation: pulseHeart 1s infinite alternate;
+        }
+        .blue-wave {
+            position: absolute;
+            bottom: 0;
+            width: 5px;
+            background-color: #8ad3fd;
+            animation: wave 3s infinite;
+        }
+    
+        @keyframes floatText {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50px) translateX(50px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+        @keyframes jumpText {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes pulseHeart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="points-container">
+        <div class="point year-2003" onclick="showYear(2003)">2003</div>
+        <div class="point year-2009" onclick="showYear(2009)">2009</div>
+        <div class="point year-2013" onclick="showYear(2013)">2013</div>
+        <div class="point year-2017" onclick="showYear(2017)">2017</div>
+        <div class="point year-2020" onclick="showYear(2020)">2020</div>
+        <div class="point year-2021" onclick="showYear(2021)">2021</div>
+        <div class="point year-2022" onclick="showYear(2022)">2022</div>
+        <div class="point year-2024" onclick="showYear(2024)">2024</div>
+    </div>
+
+    <div id="yearContent">
+        <h2 id="yearTitle"></h2>
+        <p id="yearDescription"></p>
+    </div>
+
+    <script>
+        var currentYear = null;
+        var jumpingTexts = [];
+        var waveInterval = null;
+
+        function showYear(year) {
+            var yearContent = document.getElementById('yearContent');
+
+            if (year === currentYear) {
+                yearContent.style.display = 'none';
+                removeFloatingText();
+                removeJumpingTexts();
+                removeHearts();
+                removeBlueWaves();
+                currentYear = null;
+                return;
+            }
+
+            var titleElement = document.getElementById('yearTitle');
+            var descriptionElement = document.getElementById('yearDescription');
+
+            switch (year) {
+                case 2003:
+                    titleElement.innerText = 'Year 2003';
+                    descriptionElement.innerText = 'Baby "Cho" was born in the Year of the Black Sheep!';
+                    generateFloatingText();
+                    break;
+                case 2009:
+                    titleElement.innerText = 'Year 2009';
+                    descriptionElement.innerText = 'This year has nothing to do with my love life but I needed to state that I had the worst homeroom teacher in my life.';
+                    break;
+                case 2013:
+                    titleElement.innerText = 'Year 2013';
+                    descriptionElement.innerText = '5th Grade was when I met this cute little kid. He was only a few inches taller than me and trust me I was still one of the shortest kid in our year. Perhaps the way that he smiled or the way he was friendly to everyone brought my attention towards him. Such a great kid but he ended up liking my other friend which I did root for him. I wonder where he is and what he is doing right now.';
+                    break;
+                case 2017:
+                    titleElement.innerText = 'Year 2017';
+                    descriptionElement.innerText = 'This was my first time dating someone but let me call him the basketball boy. This kid who was probably 3 years older than me (I think?) and apparently we "liked" each other but we eneded up only dating for 2 weeks. I asked to break up because the feeling of dating was making me puke all my organs out. Pretty kind kid, but I was just curious in the process of dating and having a boyfriend. Never again I promised myself. Plus, I do not consider this as dating." ';
+                    generateJumpingTexts();
+                    break;
+                case 2020:
+                    titleElement.innerText = 'Year 2020';
+                    descriptionElement.innerText = 'Why the actual flip did start dating this kid? He was the same age as me but I am guessing I was so exited on the fact that I can officially date someone that I may have feelings for. I thought that after dating this person, I will be able to like him and possibly go on those lovely dates. Suprisingly, we dated for a long time. I think I liked the idea of dating someone.';
+                    break;
+                case 2021:
+                    titleElement.innerText = 'Year 2021';
+                    descriptionElement.innerText = 'So I was still continuing to date this kid. I did not know when I started to not even care about his feelings towards me. I tried my best to like him but I think it he was just a companion to keep around. I asked to break up several times but he eneded up grabbing onto me and I had a hard time with rejecting people so I just accepted it. Maybe that is the reason why it ended up this long. But in the year of 2021, I was so fed up with him that I decided to call it an end. I came to college and I did not want to date this kid that seemed to be so annoying. I was ruthless and just called to break up and blocked him in all forms of communication. "Cho was FREE!!!" I did not want to date anyone anymore and I was so happy that I was single.';
+                    break;
+                case 2022:
+                    titleElement.innerText = 'Year 2022';
+                    descriptionElement.innerText = 'Did I just say that I did not want to date anyone? But this year was the year that I actually ended up falling in love with someone. I never thought about the process of marriage as I did not plan on marrying in the later future. But with him, I thought about marriage. We both really fell in love and it was not even like. I did not even realize that I would be able to feel the feeling of love as the world basically revolved around this person. I am thankful for him as through him,he was the one who made me realize the feelings of love. This was my first love and it ended. I did not eat or drink and ended up bawling every day. I knew that I was not able to find someone like him anymore and that our fuzzy pink relationship is something that I will not be able to find in anyone else. I do think about him some days. I wish all the best for him and that he would be able to find someone who can love him even more than I had.';
+                    generateHearts();
+                    break;
+                case 2024:
+                    titleElement.innerText = 'Year 2024';
+                    descriptionElement.innerText = 'I was heartbroken and came to the conclusion that I will not be able to find that same feeling through someone else and that no one can to me either. But, someone came into me this year and confessed their feelings towards me. Unfortunately, I did not see him the same way he did to me. After him constantly poking my heart genuinly, I ended up giving him a chance and started to date. My feelings for him is like a tranquil breeze of sky blue that caresses my waves back and forth. Whenever I am with him, I feel like breathing from the constant thinking of relationships. With him, I do not think about the mere fact of relationships, but actually get to rest my mind. Although I do not feel this feeling of love from him, I enjoy being with him and hope that one day I do get to love him. He is someone to thank for as I realized that I have moved on from my previous relationship. I want to make this relationship work out.';
+                    generateBlueWaves();
+                    break;
+                default:
+                    titleElement.innerText = 'Unknown Year';
+                    descriptionElement.innerText = 'Description not available';
+            }
+
+            yearContent.style.display = 'block';
+            currentYear = year;
+        }
+
+        function generateFloatingText() {
+            for (var i = 0; i < 10; i++) {
+                var text = document.createElement('div');
+                text.innerText = '૮꒰ ˶• ༝ •˶꒱ა';
+                text.classList.add('floating-text');
+                var x = Math.random() * window.innerWidth;
+                var y = Math.random() * window.innerHeight;
+                text.style.left = x + 'px';
+                text.style.top = y + 'px';
+                document.body.appendChild(text);
+            }
+        }
+
+        function generateJumpingTexts() {
+            for (var i = 0; i < 10; i++) {
+                var text = document.createElement('div');
+                text.innerText = 'basketball';
+                text.classList.add('jumping-text');
+                var x = Math.random() * window.innerWidth;
+                var y = Math.random() * window.innerHeight;
+                text.style.left = x + 'px';
+                text.style.top = y + 'px';
+                document.body.appendChild(text);
+                jumpingTexts.push(text);
+            }
+        }
+
+        function generateHearts() {
+            for (var i = 0; i < 30; i++) {
+                var heart = document.createElement('div');
+                heart.innerHTML = '˗ˋˏ ♡ ˎˊ˗';
+                heart.classList.add('heart');
+                var x = Math.random() * window.innerWidth;
+                var y = Math.random() * window.innerHeight;
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                document.body.appendChild(heart);
+            }
+        }
+
+        function generateBlueWaves() {
+            clearInterval(waveInterval);
+            var yValues = [];
+            var step = 0.1;
+            for (var x = 0; x <= window.innerWidth; x += 10) {
+                var y = Math.sin(step * x) * 20 + 50;
+                yValues.push(y);
+            }
+            var i = 0;
+            waveInterval = setInterval(function() {
+                var blueWave = document.createElement('div');
+                blueWave.classList.add('blue-wave');
+                blueWave.style.left = i * 10 + 'px';
+                blueWave.style.height = yValues[i] + 'px';
+                document.body.appendChild(blueWave);
+                i++;
+                if (i >= yValues.length) {
+                    clearInterval(waveInterval);
+                }
+            }, 50);
+        }
+
+        function removeFloatingText() {
+            var texts = document.getElementsByClassName('floating-text');
+            while (texts.length > 0) {
+                texts[0].parentNode.removeChild(texts[0]);
+            }
+        }
+
+        function removeJumpingTexts() {
+            jumpingTexts.forEach(text => text.parentNode.removeChild(text));
+            jumpingTexts = [];
+        }
+
+        function removeHearts() {
+            var hearts = document.getElementsByClassName('heart');
+            while (hearts.length > 0) {
+                hearts[0].parentNode.removeChild(hearts[0]);
+            }
+        }
+
+        function removeBlueWaves() {
+            clearInterval(waveInterval);
+            var blueWaves = document.querySelectorAll('.blue-wave');
+            blueWaves.forEach(function(wave) {
+                wave.parentNode.removeChild(wave);
+            });
+        }
+    </script>
+</body>
+</html>

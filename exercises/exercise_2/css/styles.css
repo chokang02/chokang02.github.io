@@ -1,12 +1,35 @@
-body {
+/* body {
     background-color: antiquewhite;
     max-width: 800px;
     /* margin: auto; */
-    margin-left: 50%;
-    margin: 2;
+    /* margin-left: 50%;
+    margin: 2; */
 
     
+/* } */ */
+.test-title + p {
+	color: blue;
 }
+
+.alert-button {
+
+}
+
+body {
+	background-color: #e3f4ec;
+	color: rgb(129, 78, 19);
+	max-width: 100%;
+	margin: 15;
+	position: relative;
+	/* padding: 4rem; */
+    display: grid;
+    grid-template-columns: 400px 1fr;
+
+    gap: 2rem;
+
+    align-items: start;
+}
+
 
 p {
     font-size: 20px;
@@ -18,13 +41,158 @@ p {
 }
 
 .navigation {
-    position: fixed;
-    top: 0%;
-    left: 0%;
+    /* position: fixed; */
+    border: 1 px soild darkgoldenrod;
+    /* position: relative; */
+    postion: sticky;
+    top: 2rem;
+    left: 2rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+    /* top: 0%;
+    left: 0%; */
+.navigation ol {
+    list-style: none;
+
+}
+
+.navigation li {
+    border-bottom: 1px solid darkgoldenrod;
+}
+
+.navigation > ol > li:last-child {
+    border-bottom: none;
+}
+
+.navigation_primary > li:last-child {
+    border-bottom: none;
+}
+
+.navigation a {
+    display: block;
+    text-decoration: none;
+    padding: o.5rem;
+    font-family: sans-serif;
+    color: darkgoldenrod
+
+    /* transition: color 1s ease; */
+}
+
+.navigation a:hover {
+    color: black;
+}
+
+/* navigation target example */
+ :target:before {
+	content: "♦";
+	display: inline-block;
+	animation: current-header 1s ease infinite reverse;
+}
+
+@keyframes current-header {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+
+	100% {
+		transform: rotate(360deg) scale(2);
+	}
+} 
 
 
 .text-with-border {
         border: 1px solid black; 
         padding: 10px;
     }
+
+    p {
+        /* font-size: 20px; */
+        font-family: sans-serif;
+        color: rgb(25, 105, 61);
+    }
+    
+    a:hover {
+        color: blueviolet;
+    }
+    
+    img {
+        width: 100%;
+        display: inline-block;
+        /* border: 1px solid black; */
+        /* padding: 1rem; */
+        /* box-sizing: border-box; */
+    }
+    
+
+
+ol {
+    margin: 0;
+    padding: 0;
+
 }
+
+ol ol {
+    padding-left: 2rem;
+}
+
+.related {
+    background-color: rgb(224, 130, 225);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.related__section-title {
+
+}
+
+.related__essay {
+    background-color: rgb(136, 225, 255);
+    border: 1 px solid black;
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: 1rem;
+    box-sizing:border-box;
+    flex-basis: calc(100%/3);
+}
+
+.related__title {
+    font-family: sans-serif;
+
+}
+
+.related_author {
+    font-family: sans-serif;
+}
+
+.intro-text {
+	background-color: lightgreen;
+	font-family: serif;
+	color: green;
+}
+
+.callout {
+	font-size: 30px;
+	font-style: italic;
+	color: cornflowerblue;
+	background-color: rgb(255, 255, 255);
+	border: 1px solid cornflowerblue;
+	margin: 0;
+	padding: 0;
+	/* box model example */
+	/* width: 100%; */
+	padding: 1rem;
+	margin: 2rem;
+	box-sizing: content-box;
+	/* width: calc(100% - 4rem); */
+}
+
+
+
+
+
+
+
+
+
+
