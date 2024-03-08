@@ -23,6 +23,24 @@
             cursor: pointer;
             text-decoration: none;
         }
+      
+        .letter {
+    position: absolute;
+    animation: fallAnimation 3s linear infinite;
+    opacity: 0;
+}
+
+@keyframes fallAnimation {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 1; /* Fade in as it falls */
+    }
+    100% {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
     </style>
 </head>
 <!DOCTYPE html>
@@ -71,6 +89,27 @@
       <a href="projects/index.html">projects</a>
     </li>
   </ul>
+
+  <div id="rainText"></div>
+
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Text content for the raining letters
+    const textContainer = document.getElementById('rainText');
+    const count = text.length;
+    const duration = 3;
+
+    for (let i = 0; i < count; i++) {
+        const letter = document.createElement('span');
+        letter.textContent = text[i];
+        letter.classList.add('letter');
+        letter.style.left = `${Math.random() * 100}vw`;
+        letter.style.animationDuration = `${Math.random() * duration + 1}s`;
+        textContainer.appendChild(letter);
+    }
+});
+
+
+  </script>
 </body>
 </html>
-
